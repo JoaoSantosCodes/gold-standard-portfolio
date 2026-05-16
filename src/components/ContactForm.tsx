@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, MessageSquare, Phone, Mail, MapPin } from "lucide-react";
+import TextDecode from "./TextDecode";
+
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -16,12 +18,21 @@ const ContactForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Redirect to WhatsApp with message
+    
+    // Secure input sanitization (prevent script injections or HTML exploits)
+    const sanitize = (val: string) => val.replace(/<[^>]*>/g, "").trim();
+    
+    const cleanName = sanitize(formData.name);
+    const cleanEmail = sanitize(formData.email);
+    const cleanMessage = sanitize(formData.message);
+
+    // Redirect to WhatsApp with sanitized message parameters
     const message = encodeURIComponent(
-      `Olá João! Meu nome é ${formData.name}.\n\n${formData.message}\n\nE-mail: ${formData.email}`
+      `Olá João! Meu nome é ${cleanName}.\n\n${cleanMessage}\n\nE-mail: ${cleanEmail}`
     );
     window.open(`https://wa.me/5511999999999?text=${message}`, "_blank");
   };
+
 
   return (
     <section id="contato" className="py-24 px-6 relative overflow-hidden">
@@ -40,7 +51,10 @@ const ContactForm = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
-            <span className="text-[10px] uppercase tracking-widest text-primary/80 font-mono">Secure Connection Active</span>
+            <span className="text-[10px] uppercase tracking-widest text-primary/80 font-mono">
+              <TextDecode text="Secure_Connection_Active" />
+            </span>
+
           </div>
           
           <h2 className="text-4xl sm:text-5xl font-serif font-medium text-gold-gradient mb-6">
@@ -64,7 +78,7 @@ const ContactForm = () => {
             <div className="space-y-4">
               <a 
                 href="mailto:joaocsantosoficial@gmail.com"
-                className="flex items-center gap-4 p-4 glass-tactical card-hover group"
+                className="flex items-center gap-4 p-4 glass-tactical card-hover group border-beam"
               >
                 <div className="p-3 rounded-sm bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                   <Mail className="w-5 h-5" />
@@ -79,7 +93,7 @@ const ContactForm = () => {
                 href="https://wa.me/5511999999999"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 glass-tactical card-hover group"
+                className="flex items-center gap-4 p-4 glass-tactical card-hover group border-beam"
               >
                 <div className="p-3 rounded-sm bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                   <Phone className="w-5 h-5" />
@@ -89,6 +103,7 @@ const ContactForm = () => {
                   <p className="text-sm text-foreground group-hover:text-primary transition-colors">+55 (11) 99999-9999</p>
                 </div>
               </a>
+
 
               <div className="flex items-center gap-4 p-4 glass-tactical">
                 <div className="p-3 rounded-sm bg-primary/10 text-primary">

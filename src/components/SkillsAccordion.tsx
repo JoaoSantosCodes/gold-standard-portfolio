@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Server, Monitor, Database, Activity, Shield, Cloud } from "lucide-react";
+import TextDecode from "./TextDecode";
+
 
 interface Skill {
   name: string;
@@ -136,8 +138,9 @@ const SkillsAccordion = () => {
           className="text-center mb-16"
         >
           <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">
-            Competências Técnicas
+            <TextDecode text="Technical_Capabilities_Matrix" />
           </p>
+
           <h2 className="text-4xl sm:text-5xl font-serif font-medium text-gold-gradient mb-6">
             Minha Experiência
           </h2>

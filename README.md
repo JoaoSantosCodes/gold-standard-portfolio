@@ -9,16 +9,20 @@ A high-fidelity personal portfolio designed with a premium "Dark & Gold" aesthet
 ### System Boot & Tactical Interface
 ![Boot Sequence](./assets/boot_sequence.webp)
 
+### Project Lab & Mission Briefing
+![Project Lab](./assets/project_lab.webp)
+
 ### Experience & Infrastructure Map
 ![Full Demo](./assets/demo_full.webp)
 
 ## 🚀 Features
 - **Elite Immersion**: Cinematic boot sequence with technical log simulations.
-- **Tactical Cursor**: Custom targeting reticle for high-end interaction.
+- **Tactical HUD**: Floating navigation dock with real-time section tracking and scroll-snap synchronization.
+- **Project Lab**: Advanced archive with **Complexity Gauges (Lvl 1-5)** and **Mission Briefing** modals.
+- **Spotlight Hero**: Mouse-reactive illumination effect with grayscale-to-color profile transitions.
+- **Secure Channel**: Tactical contact interface with transmission status and glassmorphism styling.
 - **Gold Dust Background**: Interactive Canvas-based particle system.
-- **Command Center**: Real-time status indicators and infrastructure mapping.
-- **Cyber-Skills**: Segmented progress bars for a technical aesthetic.
-- **Premium Styling**: Playfair Display typography, gold gradients, and glassmorphism.
+- **Cyber-Skills**: Segmented progress bars for a high-end technical aesthetic.
 
 **URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
 

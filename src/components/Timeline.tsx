@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { Briefcase, GraduationCap, Server, TrendingUp } from "lucide-react";
+import React, { useRef } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { Briefcase, GraduationCap, Server, TrendingUp, Target } from "lucide-react";
 
 interface TimelineItem {
   id: string;
@@ -12,6 +13,7 @@ interface TimelineItem {
 }
 
 const timelineData: TimelineItem[] = [
+  // ... (keeping existing data)
   {
     id: "drogaria",
     type: "work",
@@ -72,8 +74,20 @@ const timelineData: TimelineItem[] = [
 ];
 
 const Timeline = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"]
+  });
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   return (
-    <section id="jornada" className="py-24 px-6 bg-card/30">
+    <section id="jornada" className="py-24 px-6 bg-card/10 relative" ref={containerRef}>
       <div className="container mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -93,8 +107,14 @@ const Timeline = () => {
 
         {/* Timeline */}
         <div className="relative">
-          {/* Central line */}
-          <div className="absolute left-8 lg:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-primary/40 to-transparent lg:-translate-x-1/2" />
+          {/* Central line background */}
+          <div className="absolute left-8 lg:left-1/2 top-0 bottom-0 w-px bg-white/5 lg:-translate-x-1/2" />
+          
+          {/* Central line progress */}
+          <motion.div 
+            className="absolute left-8 lg:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-accent to-transparent lg:-translate-x-1/2 origin-top z-10"
+            style={{ scaleY }}
+          />
 
           <div className="space-y-8 lg:space-y-12">
             {timelineData.map((item, index) => {
@@ -104,19 +124,22 @@ const Timeline = () => {
               return (
                 <motion.div
                   key={item.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
+                  initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  viewport={{ once: true, margin: "-100px" }}
                   className={`relative flex items-start gap-8 ${
                     isLeft ? "lg:flex-row" : "lg:flex-row-reverse"
                   }`}
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-8 lg:left-1/2 -translate-x-1/2 z-10">
-                    <div className="w-4 h-4 rounded-full bg-background border-2 border-primary">
-                      <div className="absolute inset-1 rounded-full bg-primary" />
-                    </div>
+                  <div className="absolute left-8 lg:left-1/2 -translate-x-1/2 z-20">
+                    <motion.div 
+                      whileInView={{ scale: [0, 1.2, 1] }}
+                      className="w-4 h-4 rounded-full bg-background border-2 border-primary gold-glow"
+                    >
+                      <div className="absolute inset-1 rounded-full bg-primary animate-pulse" />
+                    </motion.div>
                   </div>
 
                   {/* Content card */}
@@ -125,45 +148,45 @@ const Timeline = () => {
                       isLeft ? "lg:pr-12 lg:text-right" : "lg:pl-12 lg:text-left"
                     }`}
                   >
-                    <div className="p-6 border border-border rounded-sm bg-card/80 backdrop-blur-sm card-hover">
+                    <div className="p-6 glass-tactical rounded-sm card-hover relative group">
+                      <div className="absolute inset-0 cyber-grid opacity-[0.02] pointer-events-none" />
+                      
                       {/* Header */}
                       <div className={`flex items-start gap-4 mb-4 ${isLeft ? "lg:flex-row-reverse" : ""}`}>
-                        <div className="p-3 rounded-sm bg-primary/10 text-primary shrink-0">
+                        <div className="p-3 rounded-sm bg-primary/10 text-primary shrink-0 group-hover:scale-110 transition-transform">
                           <Icon className="w-5 h-5" />
                         </div>
                         <div className={`flex-1 ${isLeft ? "lg:text-right" : ""}`}>
-                          <span className="inline-block px-3 py-1 text-[10px] uppercase tracking-wider text-primary bg-primary/10 rounded-sm mb-2">
+                          <span className="inline-block px-3 py-1 text-[10px] uppercase tracking-wider text-primary border border-primary/20 bg-primary/5 rounded-sm mb-2 neon-gold">
                             {item.period}
                           </span>
-                          <h3 className="text-lg font-serif text-foreground leading-tight">
+                          <h3 className="text-xl font-serif text-foreground leading-tight group-hover:text-primary transition-colors">
                             {item.title}
                           </h3>
-                          <p className="text-sm text-primary/80 mt-1">
+                          <p className="text-sm text-primary/80 mt-1 font-medium italic">
                             {item.company}
                           </p>
                         </div>
                       </div>
                       
                       {/* Description */}
-                      <p className={`text-sm text-muted-foreground mb-4 ${isLeft ? "lg:text-right" : ""}`}>
+                      <p className={`text-sm text-muted-foreground mb-4 leading-relaxed ${isLeft ? "lg:text-right" : ""}`}>
                         {item.description}
                       </p>
 
                       {/* Highlights */}
                       {item.highlights && (
-                        <ul className={`space-y-2 ${isLeft ? "lg:text-right" : ""}`}>
+                        <div className={`flex flex-wrap gap-2 ${isLeft ? "lg:justify-end" : ""}`}>
                           {item.highlights.map((highlight, i) => (
-                            <li 
+                            <span 
                               key={i} 
-                              className={`text-xs text-foreground/70 flex items-center gap-2 ${
-                                isLeft ? "lg:flex-row-reverse" : ""
-                              }`}
+                              className="text-[9px] uppercase tracking-tighter text-primary/70 border border-primary/10 px-2 py-1 bg-white/5 rounded-sm flex items-center gap-1"
                             >
-                              <TrendingUp className="w-3 h-3 text-primary shrink-0" />
-                              <span>{highlight}</span>
-                            </li>
+                              <Target className="w-2 h-2" />
+                              {highlight}
+                            </span>
                           ))}
-                        </ul>
+                        </div>
                       )}
                     </div>
                   </div>

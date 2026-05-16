@@ -16,36 +16,15 @@ interface SkillCategory {
 
 const skillCategories: SkillCategory[] = [
   {
-    id: "suporte",
-    title: "Suporte Técnico",
+    id: "infra",
+    title: "Infraestrutura & Automação",
     icon: Server,
     skills: [
-      { name: "Service Now", level: 75 },
-      { name: "ISM", level: 60 },
-      { name: "Active Directory", level: 30 },
-      { name: "PowerShell & Batch", level: 65 },
-      { name: "ERP SAP", level: 50 },
-      { name: "Virtualização de Servidores", level: 70 },
-    ],
-  },
-  {
-    id: "sistemas",
-    title: "Sistemas Operacionais",
-    icon: Monitor,
-    skills: [
-      { name: "Windows 7, 10, 11", level: 90 },
-      { name: "Linux (Ubuntu/Mint)", level: 30 },
-      { name: "macOS", level: 10 },
-    ],
-  },
-  {
-    id: "banco",
-    title: "Banco de Dados",
-    icon: Database,
-    skills: [
-      { name: "Oracle", level: 75 },
-      { name: "MySQL", level: 40 },
-      { name: "MongoDB", level: 20 },
+      { name: "PowerShell & Python Scripting", level: 85 },
+      { name: "Windows/Linux Server Admin", level: 80 },
+      { name: "Infrastructure as Code (Terraform)", level: 45 },
+      { name: "CI/CD Pipelines (GitHub Actions)", level: 60 },
+      { name: "Virtualização (VMware/Hyper-V)", level: 75 },
     ],
   },
   {
@@ -53,55 +32,74 @@ const skillCategories: SkillCategory[] = [
     title: "Monitoramento & Observabilidade",
     icon: Activity,
     skills: [
-      { name: "Zabbix", level: 70 },
-      { name: "Grafana", level: 65 },
-      { name: "Datadog", level: 60 },
-      { name: "Kibana / ELK Stack", level: 45 },
+      { name: "Zabbix & SNMP", level: 80 },
+      { name: "Grafana Dashboards", level: 75 },
+      { name: "Datadog & APM", level: 65 },
+      { name: "ELK Stack (Kibana)", level: 50 },
     ],
   },
   {
-    id: "infra",
-    title: "Infraestrutura & Cloud",
-    icon: Cloud,
+    id: "desenvolvimento",
+    title: "Desenvolvimento Frontend",
+    icon: Monitor,
     skills: [
-      { name: "Linux Server Administration", level: 55 },
-      { name: "VMware / Hyper-V", level: 65 },
-      { name: "Azure Fundamentals", level: 35 },
-      { name: "Docker Basics", level: 30 },
+      { name: "React & TypeScript", level: 70 },
+      { name: "Next.js Framework", level: 65 },
+      { name: "Tailwind CSS & Framer Motion", level: 80 },
+      { name: "Shadcn/UI & Design Systems", level: 75 },
+    ],
+  },
+  {
+    id: "dados",
+    title: "Banco de Dados & Storage",
+    icon: Database,
+    skills: [
+      { name: "Oracle SQL & PL/SQL", level: 70 },
+      { name: "PostgreSQL & Supabase", level: 60 },
+      { name: "MongoDB", level: 40 },
     ],
   },
   {
     id: "seguranca",
-    title: "Segurança da Informação",
+    title: "Segurança & Compliance",
     icon: Shield,
     skills: [
-      { name: "Políticas de Segurança", level: 60 },
-      { name: "Backup & Disaster Recovery", level: 70 },
-      { name: "Firewall & VPN", level: 50 },
-      { name: "LGPD & Compliance", level: 45 },
+      { name: "Políticas de Segurança (LGPD)", level: 65 },
+      { name: "Backup & Disaster Recovery", level: 85 },
+      { name: "Firewall (Fortigate/PFSense)", level: 55 },
+      { name: "Access Control (AD/IAM)", level: 70 },
     ],
   },
 ];
 
+
 const ProgressBar = ({ level, isVisible }: { level: number; isVisible: boolean }) => {
+  const segments = 20;
+  const activeSegments = Math.round((level / 100) * segments);
+
   return (
-    <div className="relative h-2 bg-muted/50 rounded-full overflow-hidden">
-      <motion.div
-        className="absolute inset-y-0 left-0 progress-gold rounded-full"
-        initial={{ width: 0 }}
-        animate={{ width: isVisible ? `${level}%` : 0 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-      />
-      {/* Shimmer effect */}
-      <motion.div
-        className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-transparent via-white/20 to-transparent"
-        initial={{ x: "-100%" }}
-        animate={{ x: isVisible ? "100%" : "-100%" }}
-        transition={{ duration: 1.2, delay: 0.5, ease: "easeInOut" }}
-      />
+    <div className="flex gap-1 h-3 w-full">
+      {Array.from({ length: segments }).map((_, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, scaleY: 0 }}
+          animate={{ 
+            opacity: isVisible ? (i < activeSegments ? 1 : 0.1) : 0,
+            scaleY: isVisible ? 1 : 0,
+            backgroundColor: i < activeSegments ? "hsl(43, 45%, 55%)" : "rgba(255, 255, 255, 0.1)"
+          }}
+          transition={{ 
+            duration: 0.3, 
+            delay: i * 0.02,
+            backgroundColor: { duration: 0.5, delay: i * 0.02 }
+          }}
+          className={`flex-1 rounded-[1px] ${i < activeSegments ? "gold-glow shadow-[0_0_8px_hsla(43,45%,55%,0.4)]" : ""}`}
+        />
+      ))}
     </div>
   );
 };
+
 
 const SkillItem = ({ skill, isVisible, index }: { skill: Skill; isVisible: boolean; index: number }) => {
   return (

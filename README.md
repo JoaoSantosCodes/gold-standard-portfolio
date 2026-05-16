@@ -12,6 +12,9 @@ A high-fidelity personal portfolio designed with a premium "Dark & Gold" aesthet
 ### Project Lab & Mission Briefing
 ![Project Lab](./assets/project_lab.webp)
 
+### Field Reports & Intel Archive
+![Field Reports](./assets/field_reports.png)
+
 ### Experience & Infrastructure Map
 ![Full Demo](./assets/demo_full.webp)
 
@@ -19,6 +22,7 @@ A high-fidelity personal portfolio designed with a premium "Dark & Gold" aesthet
 - **Elite Immersion**: Cinematic boot sequence with technical log simulations.
 - **Tactical HUD**: Floating navigation dock with real-time section tracking and scroll-snap synchronization.
 - **Project Lab**: Advanced archive with **Complexity Gauges (Lvl 1-5)** and **Mission Briefing** modals.
+- **Field Reports**: Fully interactive **Intel Blog** designed as a decrypted command dossier database.
 - **Spotlight Hero**: Mouse-reactive illumination effect with grayscale-to-color profile transitions.
 - **Secure Channel**: Tactical contact interface with transmission status and glassmorphism styling.
 - **Gold Dust Background**: Interactive Canvas-based particle system.

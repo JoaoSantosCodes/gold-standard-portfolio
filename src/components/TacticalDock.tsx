@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, LayoutDashboard, Terminal, MessageSquare, User, Briefcase, Database, GraduationCap } from "lucide-react";
+import { Home, LayoutDashboard, Terminal, MessageSquare, User, Briefcase, Database, GraduationCap, BookOpen } from "lucide-react";
 
 const sections = [
   { id: "inicio", name: "Início", icon: Home, href: "#" },
@@ -8,9 +8,11 @@ const sections = [
   { id: "project-lab", name: "Lab", icon: Database, href: "#project-lab" },
   { id: "experiencia", name: "Skills", icon: LayoutDashboard, href: "#experiencia" },
   { id: "academia", name: "Academy", icon: GraduationCap, href: "#academia" },
+  { id: "intel", name: "Intel", icon: BookOpen, href: "#intel" },
   { id: "jornada", name: "Jornada", icon: Briefcase, href: "#jornada" },
   { id: "contato", name: "Contato", icon: MessageSquare, href: "#contato" },
 ];
+
 
 
 

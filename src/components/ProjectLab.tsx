@@ -59,8 +59,25 @@ const projects = [
     roadmap: ["MVP: Script de auditoria básica", "V1: Hardening automático de kernel e SSH", "V2: Geração de relatórios de conformidade CIS", "V3: Dashboard de alertas via Telegram"],
     github: "#",
     demo: "#"
+  },
+  {
+    id: "opsbridge",
+    title: "OpsBridge Zabbix-to-GLPI Connector",
+    description: "Middleware inteligente de automação que integra gatilhos do Zabbix à API REST do GLPI, realizando abertura, atribuição e fechamento automático de chamados táticos para Hosts.",
+    level: 4,
+    status: "MVP",
+    tags: ["Zabbix API", "GLPI REST", "Python", "Webhooks"],
+    roadmap: [
+      "MVP: Script de conexão simples para disparo de incidentes",
+      "V1: Webhook customizado no Zabbix e mapeamento de severidade",
+      "V2: Atribuição inteligente de técnicos baseada no grupo do Host",
+      "V3: Fechamento automático de chamados quando o incidente é resolvido"
+    ],
+    github: "#",
+    demo: "#"
   }
 ];
+
 
 
 const ComplexityGauge = ({ level }: { level: number }) => {

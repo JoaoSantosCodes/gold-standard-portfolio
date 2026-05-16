@@ -114,18 +114,19 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.7 }}
               className="text-lg sm:text-xl text-foreground font-serif italic mb-4 leading-relaxed"
             >
-              Arquiteto de Sistemas, <span className="text-primary/80">Narrador de Mundos</span>.
+              Engenheiro de DevOps, <span className="text-primary/80">Automação & Ambientes Críticos</span>.
             </motion.p>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="text-muted-foreground leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8"
+              className="text-muted-foreground leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8 font-mono text-xs text-justify"
             >
-              Projetando infraestruturas robustas enquanto componho a trilha sonora da inovação. 
-              Especialista em automação, monitoramento e gestão de ambientes críticos.
+              Orquestrando pipelines autônomas e arquitetando infraestruturas altamente resilientes. 
+              Especialista em automação de nível corporativo, Linux, monitoramento proativo de sistemas e auditoria de segurança.
             </motion.p>
+
 
             {/* Buttons */}
             <motion.div

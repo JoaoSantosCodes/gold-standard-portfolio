@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, LayoutDashboard, Terminal, MessageSquare, User, Briefcase } from "lucide-react";
+import { Home, LayoutDashboard, Terminal, MessageSquare, User, Briefcase, Database } from "lucide-react";
 
 const sections = [
   { id: "inicio", name: "Início", icon: Home, href: "#" },
   { id: "command-center", name: "Status", icon: Terminal, href: "#command-center" },
+  { id: "project-lab", name: "Lab", icon: Database, href: "#project-lab" },
   { id: "experiencia", name: "Skills", icon: LayoutDashboard, href: "#experiencia" },
   { id: "jornada", name: "Jornada", icon: Briefcase, href: "#jornada" },
   { id: "contato", name: "Contato", icon: MessageSquare, href: "#contato" },
 ];
+
 
 const TacticalDock: React.FC = () => {
   const [activeSection, setActiveSection] = useState("inicio");

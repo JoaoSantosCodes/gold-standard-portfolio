@@ -31,6 +31,8 @@ const education = {
   ],
   certifications: [
     { title: "Zabbix Certified Specialist", issuer: "Zabbix SIA", year: "2024" },
+    { title: "Linux Administrator (LPIC-1)", issuer: "Linux Professional Institute", year: "2024" },
+    { title: "Shell Scripting & SysAdmin", issuer: "Udemy Certified", year: "2023" },
     { title: "GitHub Actions & CI/CD", issuer: "DevOps Academy", year: "2024" },
     { title: "Docker & Kubernetes (K8s)", issuer: "Udemy Professional", year: "2024" },
     { title: "Git & Version Control", issuer: "GitHub Lab", year: "2023" },
@@ -40,6 +42,7 @@ const education = {
     { title: "AWS Cloud Practitioner", issuer: "Amazon", year: "2023" },
   ]
 };
+
 
 
 const AcademicLab = () => {

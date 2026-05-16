@@ -48,8 +48,20 @@ const projects = [
     roadmap: ["MVP: Coleta de dados via SNMP", "V1: Visualização em tempo real", "V2: Alertas via Telegram", "V3: Multi-tenant dashboard"],
     github: "#",
     demo: "#"
+  },
+  {
+    id: "linux-sec",
+    title: "Centurion Linux Hardening OS",
+    description: "Framework automatizado em Bash para segurança extrema de servidores Enterprise Linux, estabelecendo regras de firewall e auditorias.",
+    level: 4,
+    status: "PRODUCTION",
+    tags: ["Bash", "Linux", "Security", "SysAdmin"],
+    roadmap: ["MVP: Script de auditoria básica", "V1: Hardening automático de kernel e SSH", "V2: Geração de relatórios de conformidade CIS", "V3: Dashboard de alertas via Telegram"],
+    github: "#",
+    demo: "#"
   }
 ];
+
 
 const ComplexityGauge = ({ level }: { level: number }) => {
   return (

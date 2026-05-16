@@ -11,6 +11,13 @@ const education = {
       period: "2023 — 2025",
       status: "Em Andamento",
       details: "Foco em arquitetura de software e desenvolvimento full-stack."
+    },
+    {
+      title: "Gestão de Tecnologia da Informação",
+      institution: "Universidade Estácio",
+      period: "2010 — 2013",
+      status: "Concluído",
+      details: "Formação em gestão estratégica de TI, governança e processos de negócio."
     }
   ],
   postGrad: [
@@ -23,13 +30,17 @@ const education = {
     }
   ],
   certifications: [
-    { title: "Zabbix Certified Specialist", issuer: "Zabbix", year: "2024" },
+    { title: "Zabbix Certified Specialist", issuer: "Zabbix SIA", year: "2024" },
+    { title: "GitHub Actions & CI/CD", issuer: "DevOps Academy", year: "2024" },
+    { title: "Docker & Kubernetes (K8s)", issuer: "Udemy Professional", year: "2024" },
+    { title: "Git & Version Control", issuer: "GitHub Lab", year: "2023" },
+    { title: "Terraform Associate (IaC)", issuer: "HashiCorp", year: "2024" },
     { title: "ITIL v4 Foundation", issuer: "Axelos", year: "2022" },
     { title: "Azure Fundamentals (AZ-900)", issuer: "Microsoft", year: "2023" },
     { title: "AWS Cloud Practitioner", issuer: "Amazon", year: "2023" },
-    { title: "Terraform Associate", issuer: "HashiCorp", year: "2024" },
   ]
 };
+
 
 const AcademicLab = () => {
   return (

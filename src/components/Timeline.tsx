@@ -71,7 +71,16 @@ const timelineData: TimelineItem[] = [
     period: "Concluído",
     description: "Formação técnica em infraestrutura de redes, protocolos e segurança.",
   },
+  {
+    id: "estacio-gestao",
+    type: "education",
+    title: "Gestão de Tecnologia da Informação",
+    company: "Universidade Estácio",
+    period: "2010 — 2013",
+    description: "Formação focada em gestão de serviços, governança e infraestrutura de TI.",
+  },
 ];
+
 
 const Timeline = () => {
   const containerRef = useRef<HTMLDivElement>(null);

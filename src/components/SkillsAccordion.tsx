@@ -32,9 +32,9 @@ const skillCategories: SkillCategory[] = [
     title: "Monitoramento & Observabilidade",
     icon: Activity,
     skills: [
-      { name: "Zabbix & SNMP", level: 80 },
-      { name: "Grafana Dashboards", level: 75 },
-      { name: "Datadog & APM", level: 65 },
+      { name: "CI/CD & Pipelines", level: 85 },
+      { name: "Git & GitHub Actions", level: 90 },
+      { name: "Docker & K8s", level: 75 },
       { name: "ELK Stack (Kibana)", level: 50 },
     ],
   },

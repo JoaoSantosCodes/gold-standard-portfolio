@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { ChevronDown, Download } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.png";
+import MagneticButton from "./MagneticButton";
 
 const Hero = () => {
   const mouseX = useMotionValue(0);
@@ -133,28 +134,33 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.9 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <motion.a
-                whileHover={{ scale: 1.05, x: 5 }}
-                whileTap={{ scale: 0.95 }}
-                href="/CV-JoaoSantos-Portugues-Profissional.pdf"
-                download
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-medium text-sm uppercase tracking-wider rounded-sm hover:bg-primary/90 transition-all duration-300 group gold-pulse"
-              >
-                <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform duration-300" />
-                <span>Download CV</span>
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.05, x: 5 }}
-                whileTap={{ scale: 0.95 }}
-                href="#contato"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-primary/50 text-primary font-medium text-sm uppercase tracking-wider rounded-sm hover:bg-primary/10 transition-all duration-300 glass-tactical"
-              >
-                <span>Entre em Contato</span>
-              </motion.a>
+              <MagneticButton>
+                <motion.a
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="/CV-JoaoSantos-Portugues-Profissional.pdf"
+                  download
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-medium text-sm uppercase tracking-wider rounded-sm hover:bg-primary/90 transition-all duration-300 group gold-pulse"
+                >
+                  <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                  <span>Download CV</span>
+                </motion.a>
+              </MagneticButton>
+
+              <MagneticButton>
+                <motion.a
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="#contato"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-primary/50 text-primary font-medium text-sm uppercase tracking-wider rounded-sm hover:bg-primary/10 transition-all duration-300 glass-tactical"
+                >
+                  <span>Entre em Contato</span>
+                </motion.a>
+              </MagneticButton>
             </motion.div>
           </motion.div>
         </div>

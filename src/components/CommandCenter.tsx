@@ -19,9 +19,12 @@ const CommandCenter = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-serif mb-4">Command <span className="text-primary">Center</span></h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Visão em tempo real dos sistemas e infraestruturas sob gestão.
+          <h2 className="text-[10px] uppercase tracking-[0.5em] text-primary/60 font-mono mb-4">Tactical_Interface_v4.0</h2>
+          <h2 className="text-4xl md:text-5xl font-serif font-medium text-gold-gradient">
+            Command <span className="text-primary">Center</span>
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto mt-6">
+            Visão em tempo real dos sistemas e infraestruturas sob gestão técnica.
           </p>
         </motion.div>
 
@@ -35,7 +38,7 @@ const CommandCenter = () => {
               viewport={{ once: true }}
               className="glass-tactical p-6 rounded-sm relative group overflow-hidden"
             >
-              <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-20 transition-opacity">
+              <div className="absolute top-0 right-0 p-2 opacity-5 group-hover:opacity-10 transition-opacity">
                 <system.icon size={48} />
               </div>
               <div className="flex items-center gap-4 mb-4">
@@ -70,63 +73,83 @@ const CommandCenter = () => {
           ))}
         </div>
 
-        {/* Large Tactical Map / Grid Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 glass-tactical rounded-sm p-8 relative overflow-hidden"
-        >
-          <div className="absolute inset-0 cyber-grid opacity-[0.05]" />
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-          
-          <div className="relative z-10 grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
-              <div className="flex items-center gap-4 mb-6">
-                <Activity className="text-primary animate-pulse" />
-                <h3 className="text-xl font-serif">Global Infrastructure Map</h3>
+        {/* Tactical Map & Live Logs */}
+        <div className="mt-12 grid lg:grid-cols-3 gap-6">
+          {/* Tactical Map */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-2 glass-tactical rounded-sm p-8 relative overflow-hidden"
+          >
+            <div className="absolute inset-0 cyber-grid opacity-[0.05]" />
+            <div className="flex items-center gap-4 mb-6">
+              <Activity className="text-primary animate-pulse" />
+              <h3 className="text-xl font-serif">Infrastructure_Topology</h3>
+            </div>
+            <div className="h-64 rounded-sm border border-primary/10 bg-black/40 flex items-center justify-center relative overflow-hidden">
+              <div className="absolute inset-0 opacity-20">
+                 <Network className="w-full h-full p-12 text-primary" />
               </div>
-              <div className="h-64 rounded-sm border border-primary/10 bg-black/40 flex items-center justify-center relative overflow-hidden">
-                {/* Simulated Map Visual */}
-                <div className="absolute inset-0 opacity-20">
-                   <Network className="w-full h-full p-12 text-primary" />
-                </div>
-                <div className="text-center space-y-2">
-                  <p className="text-xs text-primary/60 uppercase tracking-[0.2em]">Synchronizing data nodes...</p>
-                  <div className="flex gap-1 justify-center">
-                    {[1,2,3,4,5].map(i => (
-                      <motion.div
-                        key={i}
-                        animate={{ height: [4, 12, 4] }}
-                        transition={{ repeat: Infinity, duration: 1, delay: i * 0.1 }}
-                        className="w-1 bg-primary/40"
-                      />
-                    ))}
-                  </div>
+              <div className="text-center space-y-2 z-10">
+                <p className="text-xs text-primary/60 uppercase tracking-[0.2em]">Neural Node Mapping Active</p>
+                <div className="flex gap-1 justify-center">
+                  {[1,2,3,4,5].map(i => (
+                    <motion.div
+                      key={i}
+                      animate={{ height: [4, 12, 4] }}
+                      transition={{ repeat: Infinity, duration: 1, delay: i * 0.1 }}
+                      className="w-1 bg-primary/40"
+                    />
+                  ))}
                 </div>
               </div>
             </div>
-            <div className="space-y-6">
-              <h3 className="text-lg font-serif">System Logs</h3>
-              <div className="space-y-4 font-mono text-[10px]">
-                {[
-                  { time: "14:22:01", msg: "Initializing kernel modules..." },
-                  { time: "14:22:05", msg: "Establishing secure handshake." },
-                  { time: "14:22:12", msg: "Neural network synced." },
-                  { time: "14:22:30", msg: "Infrastructure nominal." },
-                ].map((log, i) => (
-                  <div key={i} className="flex gap-4 border-l border-primary/20 pl-4 py-1">
-                    <span className="text-primary/60">{log.time}</span>
-                    <span className="text-muted-foreground">{log.msg}</span>
-                  </div>
-                ))}
+          </motion.div>
+
+          {/* Live System Logs */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="glass-tactical p-6 rounded-sm border-primary/10 relative overflow-hidden h-[400px] flex flex-col"
+          >
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-[10px] uppercase tracking-[0.3em] text-primary/60 font-mono">System_Activity_Log</h3>
+              <div className="flex gap-1">
+                 <div className="w-1 h-1 bg-primary animate-pulse" />
+                 <div className="w-1 h-1 bg-primary/40" />
+                 <div className="w-1 h-1 bg-primary/20" />
               </div>
-              <button className="w-full py-3 border border-primary/30 text-[10px] uppercase tracking-widest hover:bg-primary/5 transition-colors">
-                Access Full Terminal
-              </button>
             </div>
-          </div>
-        </motion.div>
+            
+            <div className="flex-1 font-mono text-[9px] space-y-2 overflow-hidden relative">
+               <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background/80 to-transparent z-10" />
+               <motion.div 
+                 animate={{ y: [0, -600] }}
+                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                 className="space-y-2"
+               >
+                 {[...Array(40)].map((_, i) => (
+                   <div key={i} className="flex gap-3 opacity-60 hover:opacity-100 transition-opacity">
+                      <span className="text-primary/40">[{new Date().toLocaleTimeString()}]</span>
+                      <span className="text-white/80">
+                        {i % 4 === 0 ? "NETWORK: Latency check completed in sector 7-G" : 
+                         i % 4 === 1 ? "SECURITY: Encrypted handshake successful" :
+                         i % 4 === 2 ? "CORE: Synchronizing neural mapping nodes" :
+                         "SYSTEM: Maintenance protocol 44.0.1 initialized"}
+                      </span>
+                      <span className="ml-auto text-primary/20 italic">0x{Math.floor(Math.random()*1000).toString(16)}</span>
+                   </div>
+                 ))}
+               </motion.div>
+            </div>
+            
+            <button className="mt-4 w-full py-2 border border-primary/20 text-[9px] uppercase tracking-widest text-primary hover:bg-primary hover:text-black transition-all duration-300">
+               Open Tactical Terminal
+            </button>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

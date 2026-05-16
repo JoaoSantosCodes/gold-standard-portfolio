@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Folder, Database, Shield, Zap, Search, LayoutGrid } from "lucide-react";
 import ProjectBriefing from "./ProjectBriefing";
+import TextDecode from "./TextDecode";
 
 const projects = [
   {
@@ -78,9 +79,11 @@ const ProjectLab = () => {
           className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16"
         >
           <div className="space-y-4">
-            <h3 className="text-[10px] uppercase tracking-[0.5em] text-primary/60 font-mono">Module_Archive</h3>
+            <h3 className="text-[10px] uppercase tracking-[0.5em] text-primary/60 font-mono">
+              <TextDecode text="Module_Archive" />
+            </h3>
             <h2 className="text-4xl md:text-5xl font-serif font-medium text-gold-gradient">
-              Project <span className="text-primary">Lab</span>
+              Project <span className="text-primary"><TextDecode text="Lab" delay={0.5} /></span>
             </h2>
             <div className="w-20 h-1 bg-primary/20 rounded-full" />
           </div>
@@ -99,7 +102,7 @@ const ProjectLab = () => {
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
               onClick={() => setSelectedProject(project)}
-              className="glass-tactical p-6 rounded-sm border-primary/5 hover:border-primary/40 transition-all duration-500 cursor-pointer group relative overflow-hidden"
+              className="glass-tactical p-6 rounded-sm border-primary/5 hover:border-primary/40 transition-all duration-500 cursor-pointer group relative overflow-hidden border-beam"
             >
               <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                  <Folder size={40} />

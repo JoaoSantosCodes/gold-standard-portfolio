@@ -245,6 +245,34 @@
     100% { bottom: -100px; }
   }
 
+  .border-beam {
+    position: relative;
+    z-index: 0;
+  }
+
+  .border-beam::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    padding: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(43, 45%, 55%, 0.5) 50%,
+      transparent 100%
+    );
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    z-index: -1;
+    animation: border-beam-anim 4s linear infinite;
+    background-size: 200% 100%;
+  }
+
+  @keyframes border-beam-anim {
+    0% { background-position: 100% 0%; }
+    100% { background-position: -100% 0%; }
+  }
+
   .mask-radial {
     mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
   }

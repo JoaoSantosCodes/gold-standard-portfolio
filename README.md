@@ -1,6 +1,24 @@
-# Welcome to your Lovable project
+# Gold Portfolio: Elite Creative OS
 
-## Project info
+[![Elite Edition](https://img.shields.io/badge/Edition-Elite_Gold-D4AF37)](https://github.com/JoaoSantosCodes/gold-standard-portfolio)
+
+A high-fidelity personal portfolio designed with a premium "Dark & Gold" aesthetic, featuring a cinematic boot sequence and tactical system visualizations.
+
+## 📸 Visual Documentation
+
+### System Boot & Tactical Interface
+![Boot Sequence](./assets/boot_sequence.webp)
+
+### Experience & Infrastructure Map
+![Full Demo](./assets/demo_full.webp)
+
+## 🚀 Features
+- **Elite Immersion**: Cinematic boot sequence with technical log simulations.
+- **Tactical Cursor**: Custom targeting reticle for high-end interaction.
+- **Gold Dust Background**: Interactive Canvas-based particle system.
+- **Command Center**: Real-time status indicators and infrastructure mapping.
+- **Cyber-Skills**: Segmented progress bars for a technical aesthetic.
+- **Premium Styling**: Playfair Display typography, gold gradients, and glassmorphism.
 
 **URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
 

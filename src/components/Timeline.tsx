@@ -55,31 +55,8 @@ const timelineData: TimelineItem[] = [
       "Suporte técnico a clientes corporativos",
     ],
   },
-  {
-    id: "estacio",
-    type: "education",
-    title: "Análise e Desenvolvimento de Sistemas",
-    company: "Universidade Estácio",
-    period: "2023 — 2025",
-    description: "Graduação em tecnologia com foco em desenvolvimento de sistemas e arquitetura de software.",
-  },
-  {
-    id: "senac",
-    type: "education",
-    title: "Técnico em Redes de Computadores",
-    company: "Senac São Paulo",
-    period: "Concluído",
-    description: "Formação técnica em infraestrutura de redes, protocolos e segurança.",
-  },
-  {
-    id: "estacio-gestao",
-    type: "education",
-    title: "Gestão de Tecnologia da Informação",
-    company: "Universidade Estácio",
-    period: "2010 — 2013",
-    description: "Formação focada em gestão de serviços, governança e infraestrutura de TI.",
-  },
 ];
+
 
 
 const Timeline = () => {

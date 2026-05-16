@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+
 import { Home, LayoutDashboard, Terminal, MessageSquare, User, Briefcase, Database, GraduationCap, BookOpen } from "lucide-react";
 
 const sections = [
@@ -8,8 +10,9 @@ const sections = [
   { id: "project-lab", name: "Lab", icon: Database, href: "#project-lab" },
   { id: "experiencia", name: "Skills", icon: LayoutDashboard, href: "#experiencia" },
   { id: "academia", name: "Academy", icon: GraduationCap, href: "#academia" },
-  { id: "intel", name: "Intel", icon: BookOpen, href: "#intel" },
+  { id: "intel", name: "Intel", icon: BookOpen, href: "/blog" },
   { id: "jornada", name: "Jornada", icon: Briefcase, href: "#jornada" },
+
   { id: "contato", name: "Contato", icon: MessageSquare, href: "#contato" },
 ];
 
@@ -17,8 +20,10 @@ const sections = [
 
 
 const TacticalDock: React.FC = () => {
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState("inicio");
   const [isScrolled, setIsScrolled] = useState(false);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,13 +55,17 @@ const TacticalDock: React.FC = () => {
             key={section.id}
             href={section.href}
             onClick={(e) => {
-              if (section.href === "#") {
+              if (section.href.startsWith("/")) {
+                e.preventDefault();
+                navigate(section.href);
+              } else if (section.href === "#") {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               } else {
                 e.preventDefault();
                 document.getElementById(section.id)?.scrollIntoView({ behavior: "smooth" });
               }
             }}
+
             className="relative p-2 group"
           >
             <section.icon 

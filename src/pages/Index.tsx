@@ -14,7 +14,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import TacticalDock from "@/components/TacticalDock";
 import ProjectLab from "@/components/ProjectLab";
 import AcademicLab from "@/components/AcademicLab";
-import FieldReports from "@/components/FieldReports";
+
 
 const Index = () => {
   const [isBooted, setIsBooted] = useState(false);
@@ -46,9 +46,9 @@ const Index = () => {
           <div className="snap-section"><ProjectLab /></div>
           <div className="snap-section"><AcademicLab /></div>
           <div className="snap-section"><SkillsAccordion /></div>
-          <div className="snap-section"><FieldReports /></div>
           <div className="snap-section"><Timeline /></div>
           <div className="snap-section"><ContactForm /></div>
+
           <Footer />
         </div>
       </div>

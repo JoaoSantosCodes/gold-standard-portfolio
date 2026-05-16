@@ -11,6 +11,7 @@ import BackgroundParticles from "@/components/BackgroundParticles";
 import BootSequence from "@/components/BootSequence";
 import TacticalCursor from "@/components/TacticalCursor";
 import ScrollProgress from "@/components/ScrollProgress";
+import TacticalDock from "@/components/TacticalDock";
 
 const Index = () => {
   const [isBooted, setIsBooted] = useState(false);
@@ -21,9 +22,10 @@ const Index = () => {
         {!isBooted && <BootSequence onComplete={() => setIsBooted(true)} />}
       </AnimatePresence>
 
-      <div className={`min-h-screen bg-background relative overflow-hidden transition-opacity duration-1000 ${isBooted ? "opacity-100" : "opacity-0"}`}>
+      <div id="inicio" className={`min-h-screen bg-background relative overflow-hidden transition-opacity duration-1000 ${isBooted ? "opacity-100" : "opacity-0"}`}>
         <TacticalCursor />
         <ScrollProgress />
+        <TacticalDock />
         
         {/* Background elements */}
         <BackgroundParticles />
@@ -34,13 +36,13 @@ const Index = () => {
         <div className="noise-overlay" />
         
         {/* Main content */}
-        <div className="relative z-10">
+        <div className="relative z-10 h-screen overflow-y-auto snap-container">
           <Navigation />
-          <Hero />
-          <CommandCenter />
-          <SkillsAccordion />
-          <Timeline />
-          <ContactForm />
+          <div className="snap-section"><Hero /></div>
+          <div className="snap-section"><CommandCenter /></div>
+          <div className="snap-section"><SkillsAccordion /></div>
+          <div className="snap-section"><Timeline /></div>
+          <div className="snap-section"><ContactForm /></div>
           <Footer />
         </div>
       </div>

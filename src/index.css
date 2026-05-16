@@ -248,4 +248,35 @@
   .mask-radial {
     mask-image: radial-gradient(circle at center, black 0%, transparent 80%);
   }
+
+  /* Scroll Snap */
+  .snap-container {
+    scroll-snap-type: y mandatory;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  /* Micro-animations */
+  .icon-hover-rotate {
+    @apply transition-transform duration-500;
+  }
+
+  .icon-hover-rotate:hover {
+    transform: rotate(15deg) scale(1.1);
+  }
+
+  .icon-pulse-gold {
+    animation: icon-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes icon-pulse {
+    0%, 100% { opacity: 1; filter: drop-shadow(0 0 2px hsl(43, 45%, 55%, 0.5)); }
+    50% { opacity: 0.7; filter: drop-shadow(0 0 8px hsl(43, 45%, 55%, 0.8)); }
+  }
 }

@@ -24,8 +24,10 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contato" className="py-24 px-6">
-      <div className="container mx-auto max-w-4xl">
+    <section id="contato" className="py-24 px-6 relative overflow-hidden">
+      <div className="absolute inset-0 cyber-grid opacity-[0.02] pointer-events-none" />
+      
+      <div className="container mx-auto max-w-4xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -33,15 +35,19 @@ const ContactForm = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">
-            Vamos Conversar
-          </p>
+          <div className="inline-flex items-center gap-2 px-3 py-1 border border-primary/20 rounded-full bg-primary/5 mb-6">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            <span className="text-[10px] uppercase tracking-widest text-primary/80 font-mono">Secure Connection Active</span>
+          </div>
+          
           <h2 className="text-4xl sm:text-5xl font-serif font-medium text-gold-gradient mb-6">
-            Entre em Contato
+            Estabelecer Contato
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Interessado em colaborar ou discutir oportunidades? 
-            Envie uma mensagem e retornarei o mais breve possível.
+          <p className="text-muted-foreground max-w-xl mx-auto italic font-serif">
+            "A arquitetura de uma conversa é o primeiro passo para a inovação."
           </p>
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mt-6" />
         </motion.div>
@@ -58,14 +64,14 @@ const ContactForm = () => {
             <div className="space-y-4">
               <a 
                 href="mailto:joaocsantosoficial@gmail.com"
-                className="flex items-center gap-4 p-4 border border-border rounded-sm bg-card/50 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group"
+                className="flex items-center gap-4 p-4 glass-tactical card-hover group"
               >
-                <div className="p-3 rounded-sm bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                <div className="p-3 rounded-sm bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-0.5">E-mail</p>
-                  <p className="text-sm text-foreground">joaocsantosoficial@gmail.com</p>
+                  <p className="text-[10px] uppercase tracking-wider text-primary/60 mb-0.5 font-mono">Channel_01: E-mail</p>
+                  <p className="text-sm text-foreground group-hover:text-primary transition-colors">joaocsantosoficial@gmail.com</p>
                 </div>
               </a>
 
@@ -73,23 +79,23 @@ const ContactForm = () => {
                 href="https://wa.me/5511999999999"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 border border-border rounded-sm bg-card/50 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group"
+                className="flex items-center gap-4 p-4 glass-tactical card-hover group"
               >
-                <div className="p-3 rounded-sm bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                <div className="p-3 rounded-sm bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-0.5">WhatsApp</p>
-                  <p className="text-sm text-foreground">+55 (11) 99999-9999</p>
+                  <p className="text-[10px] uppercase tracking-wider text-primary/60 mb-0.5 font-mono">Channel_02: WhatsApp</p>
+                  <p className="text-sm text-foreground group-hover:text-primary transition-colors">+55 (11) 99999-9999</p>
                 </div>
               </a>
 
-              <div className="flex items-center gap-4 p-4 border border-border rounded-sm bg-card/50">
+              <div className="flex items-center gap-4 p-4 glass-tactical">
                 <div className="p-3 rounded-sm bg-primary/10 text-primary">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-0.5">Localização</p>
+                  <p className="text-[10px] uppercase tracking-wider text-primary/60 mb-0.5 font-mono">Coordinates</p>
                   <p className="text-sm text-foreground">São Paulo, SP — Brasil</p>
                 </div>
               </div>
@@ -107,8 +113,8 @@ const ContactForm = () => {
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                    Nome *
+                  <label htmlFor="name" className="text-[10px] uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
+                    <div className="w-1 h-1 bg-primary rounded-full" /> Input_Origin
                   </label>
                   <input
                     type="text"
@@ -117,14 +123,14 @@ const ContactForm = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-card border border-border rounded-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all duration-300"
-                    placeholder="Seu nome"
+                    className="w-full px-4 py-3 bg-black/40 border border-primary/20 rounded-sm text-foreground placeholder:text-muted-foreground/30 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all duration-300"
+                    placeholder="Identificação"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="whatsapp" className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                    WhatsApp
+                  <label htmlFor="whatsapp" className="text-[10px] uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
+                    <div className="w-1 h-1 bg-primary rounded-full" /> Input_Async
                   </label>
                   <input
                     type="tel"
@@ -132,15 +138,15 @@ const ContactForm = () => {
                     name="whatsapp"
                     value={formData.whatsapp}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-card border border-border rounded-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all duration-300"
-                    placeholder="(11) 99999-9999"
+                    className="w-full px-4 py-3 bg-black/40 border border-primary/20 rounded-sm text-foreground placeholder:text-muted-foreground/30 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all duration-300"
+                    placeholder="WhatsApp/Mobile"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="email" className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                  E-mail *
+                <label htmlFor="email" className="text-[10px] uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
+                  <div className="w-1 h-1 bg-primary rounded-full" /> Input_Return
                 </label>
                 <input
                   type="email"
@@ -149,14 +155,14 @@ const ContactForm = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-card border border-border rounded-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all duration-300"
-                  placeholder="seu@email.com"
+                  className="w-full px-4 py-3 bg-black/40 border border-primary/20 rounded-sm text-foreground placeholder:text-muted-foreground/30 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all duration-300"
+                  placeholder="seu@servidor.com"
                 />
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="message" className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                  Mensagem *
+                <label htmlFor="message" className="text-[10px] uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
+                  <div className="w-1 h-1 bg-primary rounded-full" /> Input_Data
                 </label>
                 <textarea
                   id="message"
@@ -165,24 +171,25 @@ const ContactForm = () => {
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 bg-card border border-border rounded-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all duration-300 resize-none"
-                  placeholder="Descreva seu projeto ou oportunidade..."
+                  className="w-full px-4 py-3 bg-black/40 border border-primary/20 rounded-sm text-foreground placeholder:text-muted-foreground/30 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all duration-300 resize-none"
+                  placeholder="Descreva a missão ou oportunidade..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-primary text-primary-foreground font-medium uppercase tracking-wider text-sm rounded-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background transition-all duration-300 group"
+                className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-primary text-primary-foreground font-bold uppercase tracking-widest text-xs rounded-sm hover:bg-primary/90 focus:outline-none transition-all duration-300 group neon-gold"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>Enviar Mensagem</span>
-                <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                <span>Transmitir Dados</span>
+                <Send className="w-4 h-4 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-300" />
               </button>
             </form>
           </motion.div>
         </div>
       </div>
     </section>
+
   );
 };
 

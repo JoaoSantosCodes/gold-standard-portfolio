@@ -1,15 +1,42 @@
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { ChevronDown, Download } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.png";
 
 const Hero = () => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const handleMouseMove = ({ clientX, clientY, currentTarget }: React.MouseEvent) => {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  };
+
   const scrollToExperience = () => {
     document.getElementById("experiencia")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center relative px-6 pt-20">
-      <div className="container mx-auto max-w-6xl">
+    <section 
+      onMouseMove={handleMouseMove}
+      className="min-h-screen flex flex-col items-center justify-center relative px-6 pt-20 group/hero"
+    >
+      {/* Spotlight Effect */}
+      <motion.div
+        className="pointer-events-none absolute -inset-px opacity-0 group-hover/hero:opacity-100 transition duration-300 z-10"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              650px circle at ${mouseX}px ${mouseY}px,
+              rgba(212, 175, 55, 0.07),
+              transparent 80%
+            )
+          `,
+        }}
+      />
+
+      <div className="container mx-auto max-w-6xl relative z-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Profile Image */}
           <motion.div
@@ -18,7 +45,7 @@ const Hero = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex justify-center lg:justify-end order-1 lg:order-1"
           >
-            <div className="relative">
+            <div className="relative group/image">
               {/* Outer decorative frame */}
               <div className="absolute -inset-4 border border-primary/20 rounded-sm" />
               <div className="absolute -inset-8 border border-primary/10 rounded-sm" />
@@ -31,7 +58,7 @@ const Hero = () => {
                 <img 
                   src={profilePhoto}
                   alt="Jonh C. - Arquiteto de Sistemas"
-                  className="w-full h-full object-cover object-top grayscale contrast-110"
+                  className="w-full h-full object-cover object-top grayscale contrast-110 group-hover/image:grayscale-0 transition-all duration-700"
                 />
                 {/* Subtle gold tint overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-primary/5" />
@@ -99,7 +126,7 @@ const Hero = () => {
               Especialista em automação, monitoramento e gestão de ambientes críticos.
             </motion.p>
 
-            {/* Download CV Button */}
+            {/* Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -147,8 +174,6 @@ const Hero = () => {
           <span className="text-[10px] uppercase tracking-[0.25em] font-medium">
             Explorar
           </span>
-          
-          {/* Animated scroll line */}
           <div className="relative h-16 w-px overflow-hidden">
             <div className="absolute inset-0 bg-border" />
             <motion.div
@@ -164,7 +189,6 @@ const Hero = () => {
               }}
             />
           </div>
-          
           <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform duration-300" />
         </button>
       </motion.div>
@@ -173,3 +197,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

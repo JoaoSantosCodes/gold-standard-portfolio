@@ -1,25 +1,31 @@
 import { Home, BookOpen, Mail, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+
 
 const Navigation = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
     { icon: Home, label: "Início", href: "#" },
-    { icon: BookOpen, label: "Blog", href: "#blog" },
+    { icon: BookOpen, label: "Blog", href: "/blog" },
     { icon: Mail, label: "Contato", href: "#contato" },
   ];
 
   const scrollToSection = (href: string) => {
     setIsMenuOpen(false);
-    if (href === "#") {
+    if (href.startsWith("/")) {
+      navigate(href);
+    } else if (href === "#") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       const element = document.querySelector(href);
       element?.scrollIntoView({ behavior: "smooth" });
     }
   };
+
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border/50">
